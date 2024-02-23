@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sprite;
 
+
+
     [SerializeField] private LayerMask jumpableGround;
 
     private float dirX;
