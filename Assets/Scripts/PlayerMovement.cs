@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D coll;
     private Animator anim;
     private SpriteRenderer sprite;
+    private GrappleHook hook;
 
 
 
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        hook = GetComponent<GrappleHook>(); 
     }
 
     // Update is called once per frame
@@ -35,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     {
         dirX = Input.GetAxisRaw("Horizontal");
 
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -43,6 +44,18 @@ public class PlayerMovement : MonoBehaviour
         }
 
         UpdateAnimationState();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!hook.retracting)
+        {
+            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
     private void UpdateAnimationState()
