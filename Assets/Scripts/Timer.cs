@@ -7,10 +7,10 @@ using System;
 public class Timer : MonoBehaviour
 {
     private TMP_Text timerText;
-    enum TimerType {Countdown,  Stopwatch}
+    enum TimerType { Countdown, Stopwatch }
+    string textTime;
 
     [SerializeField] private TimerType timerType;
-
     [SerializeField] private float timeToDisplay = 60.0f;
 
     private bool isRunning;
@@ -36,9 +36,7 @@ public class Timer : MonoBehaviour
 
 
     private void EventMangerOnTimerStart() => isRunning = true;
-
     private void EventMangerOnTimerStop() => isRunning = false;
-
     private void EventMangerOnTimerUpdate(float time) => timeToDisplay += time;
 
     private void Update()
@@ -53,7 +51,11 @@ public class Timer : MonoBehaviour
 
         TimeSpan timeSpan = TimeSpan.FromSeconds(timeToDisplay);
         timerText.text = timeSpan.ToString(@"mm\:ss\:ff");
+        textTime = timerText.text;
     }
 
-
+public string GetTime()
+    {
+        return textTime;
+    }
 }

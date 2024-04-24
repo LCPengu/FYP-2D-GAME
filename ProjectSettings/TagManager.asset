@@ -7,6 +7,7 @@ TagManager:
   - Cherry
   - Ground Spikes
   - Trap
+  - Crushing Block
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - UI
   - Groud
   - Grapplable
-  - 
+  - Fire Traps
   - 
   - 
   - 
